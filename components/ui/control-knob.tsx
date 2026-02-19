@@ -218,7 +218,7 @@ function DisplayValue({
   value,
   controlled,
 }: {
-  value: number | ReturnType<typeof useTransform<number>>;
+  value: number | MotionValue<number>;
   controlled: boolean;
 }) {
   const [display, setDisplay] = useState(0);
@@ -241,7 +241,7 @@ function DisplayValue({
     );
   }
 
-  useMotionValueEvent(value as ReturnType<typeof useTransform<number>>, "change", (latest) =>
+  useMotionValueEvent(value as MotionValue<number>, "change", (latest) =>
     setDisplay(Math.round(latest))
   );
 
