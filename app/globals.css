@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #0a0a0a;
+  --card: #141414;
+  --card-foreground: #fafafa;
+  --border: #262626;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #6366f1;
+  --accent-foreground: #fafafa;
+  --folder-back: #1e1e2e;
+  --folder-tab: #313244;
+  --folder-front: #45475a;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #141414;
+  --border: #262626;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
