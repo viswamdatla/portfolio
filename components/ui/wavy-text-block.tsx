@@ -113,10 +113,14 @@ export function WavyBlockItem({
   return <motion.div style={{ x, ...style }} suppressHydrationWarning {...props} />;
 }
 
+const defaultOffset = ["start end", "end start"] as const;
+
 export function WavyBlock({
-  offset = ["start end", "end start"],
+  offset = defaultOffset,
   ...props
-}: React.ComponentPropsWithRef<"div"> & { offset?: [string, string] }) {
+}: React.ComponentPropsWithRef<"div"> & {
+  offset?: readonly [string, string];
+}) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [maxLen, setMaxLen] = React.useState(1);
 
@@ -132,7 +136,8 @@ export function WavyBlock({
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset,
+    // framer-motion expects a specific offset tuple type; cast to satisfy strict typing
+    offset: (offset ?? defaultOffset) as ["start end", "end start"],
   });
 
   return (
